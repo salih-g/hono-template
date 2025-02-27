@@ -13,7 +13,6 @@ const envSchema = z.object({
   JWT_SECRET: z.string(),
   JWT_EXPIRES_IN: z.string().default('7d'),
   LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
-  SWAGGER_TITLE: z.string().default('Hono Prisma API'),
   SWAGGER_DESCRIPTION: z.string().default('API Docs'),
   SWAGGER_VERSION: z.string().default('1.0.0'),
   SWAGGER_PATH: z.string().default('/api-docs'),
@@ -48,7 +47,6 @@ export const config = {
     level: env.LOG_LEVEL,
   },
   swagger: {
-    title: env.SWAGGER_TITLE,
     description: env.SWAGGER_DESCRIPTION,
     version: env.SWAGGER_VERSION,
     path: env.SWAGGER_PATH,
