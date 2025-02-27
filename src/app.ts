@@ -9,7 +9,7 @@ import { loggerMiddleware } from './middlewares/logger.middleware';
 import { errorMiddleware } from './middlewares/error.middleware';
 import { notFoundMiddleware } from './middlewares/notFound.middleware';
 import { rateLimiter } from './middlewares/rateLimit.middleware';
-// import { apiRoutes } from './routes';
+import { apiRoutes } from './routes';
 
 export const app = new Hono();
 
@@ -37,7 +37,7 @@ const api = new Hono().basePath(config.apiPrefix);
 
 api.use('*', rateLimiter);
 
-// api.route('/', apiRoutes);
+api.route('/', apiRoutes);
 
 app.route('', api);
 

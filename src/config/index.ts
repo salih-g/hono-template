@@ -46,6 +46,7 @@ const envSchema = z.object({
   JWT_EXPIRES_IN: z.string().default('7d'),
   LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
   SWAGGER_DESCRIPTION: z.string().default('API Docs'),
+  SWAGGER_TITLE: z.string().default('Hono API'),
   SWAGGER_VERSION: z.string().default('1.0.0'),
   SWAGGER_PATH: z.string().default('/api-docs'),
   RATE_LIMIT_WINDOW_MS: z
@@ -79,6 +80,7 @@ export const config = {
     level: env.LOG_LEVEL,
   },
   swagger: {
+    title: env.SWAGGER_TITLE,
     description: env.SWAGGER_DESCRIPTION,
     version: env.SWAGGER_VERSION,
     path: env.SWAGGER_PATH,
