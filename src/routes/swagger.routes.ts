@@ -36,7 +36,7 @@ const apiDoc = {
           },
           message: {
             type: 'string',
-            example: 'Hata mesajı',
+            example: 'Error message',
           },
           status: {
             type: 'integer',
