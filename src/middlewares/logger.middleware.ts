@@ -5,7 +5,7 @@ export async function loggerMiddleware(c: Context, next: Next) {
   const start = Date.now();
   const { method, url } = c.req;
 
-  logger.info({
+  logger.info('', {
     type: 'request',
     method,
     path: url,
@@ -17,7 +17,7 @@ export async function loggerMiddleware(c: Context, next: Next) {
     await next();
   } catch (err) {
     // Hata oluşursa logla
-    logger.error({
+    logger.error('', {
       type: 'error',
       method,
       path: url,
@@ -27,7 +27,7 @@ export async function loggerMiddleware(c: Context, next: Next) {
   }
 
   const responseTime = Date.now() - start;
-  logger.info({
+  logger.info('', {
     type: 'response',
     method,
     path: url,

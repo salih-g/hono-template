@@ -25,8 +25,10 @@ async function bootstrap() {
       port: config.port,
     });
 
-    logger.info(`Server is running in ${config.nodeEnv} mode on ${config.host}:${config.port}`);
-    logger.info(`API Docs: ${config.host}:${config.port}${config.swagger.path}`);
+    logger.info(
+      `Server is running in ${config.nodeEnv} mode on http://${config.host}:${config.port}`,
+    );
+    logger.info(`API Docs: http://${config.host}:${config.port}${config.swagger.path}`);
 
     const shutdown = async () => {
       logger.info('Server is shuting down...');

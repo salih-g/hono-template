@@ -3,6 +3,7 @@ import { cors } from 'hono/cors';
 import { logger as honoLogger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
 import { swaggerUI } from '@hono/swagger-ui';
+
 import { config } from './config';
 import { loggerMiddleware } from './middlewares/logger.middleware';
 import { errorMiddleware } from './middlewares/error.middleware';
