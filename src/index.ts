@@ -15,7 +15,7 @@ async function bootstrap() {
   try {
     await prisma.$connect().catch(error => {
       logger.error('Database connection failed:', error);
-      console.log('girdim');
+
       process.exit(1);
     });
     logger.info('Database connection successful');
