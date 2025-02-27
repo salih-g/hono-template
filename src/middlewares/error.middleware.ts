@@ -23,7 +23,6 @@ export async function errorMiddleware(c: Context, next: Next) {
       );
     }
 
-    // Prisma errors
     if (error instanceof PrismaClientKnownRequestError) {
       const status = 400;
       let message = 'An error occurred during database operation';

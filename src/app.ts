@@ -32,7 +32,6 @@ app.get(
   }),
 );
 
-// API rotaları
 const api = new Hono().basePath(config.apiPrefix);
 
 api.use('*', rateLimiter);

@@ -1,6 +1,38 @@
 import 'dotenv/config';
 import { z } from 'zod';
 
+// Eksik ortam değişkenlerini kontrol et
+const checkRequiredEnvVars = () => {
+  const requiredVars = ['DATABASE_URL', 'JWT_SECRET'];
+  const missingVars = requiredVars.filter(varName => !process.env[varName]);
+  if (missingVars.length > 0) {
+    console.error('❌ Missing environment variables detected:');
+    console.error(`   ${missingVars.join(', ')}`);
+    console.error('');
+    console.error('🔍 Please check your .env file and set the required variables.');
+    console.error('💡 You can start by copying the .env.example file:');
+    console.error('   cp .env.example .env');
+    console.error('');
+
+    // Show example .env content in development mode
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('🧪 For development purposes, you can use the following example values:');
+      console.error('');
+      console.error(
+        'DATABASE_URL="postgresql://postgres:postgres@localhost:5432/mydb?schema=public"',
+      );
+      console.error(
+        'JWT_SECRET="temporary_secret_key_for_development_replace_with_a_strong_value"',
+      );
+      console.error('');
+    }
+
+    process.exit(1);
+  }
+};
+
+checkRequiredEnvVars();
+
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z
