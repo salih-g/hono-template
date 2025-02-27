@@ -1,15 +1,11 @@
+import { serve } from '@hono/node-server';
+
 import 'module-alias/register';
 import './config/moduleAlias';
 import { config } from './config';
 import { app } from './app';
 import { logger } from './utils/logger';
-import { PrismaClient } from '@prisma/client';
-import { serve } from '@hono/node-server';
-
-// Veritabanı bağlantısı
-export const prisma = new PrismaClient({
-  log: config.nodeEnv === 'development' ? ['query', 'error', 'warn'] : ['error'],
-});
+import { prisma } from './prisma';
 
 async function bootstrap() {
   try {
@@ -28,7 +24,6 @@ async function bootstrap() {
     logger.info(
       `Server is running in ${config.nodeEnv} mode on http://${config.host}:${config.port}`,
     );
-    logger.info(`API Docs: http://${config.host}:${config.port}${config.swagger.path}`);
 
     const shutdown = async () => {
       logger.info('Server is shuting down...');

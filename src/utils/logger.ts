@@ -1,8 +1,6 @@
-// logger.ts
 import config from '@/config';
 import pino from 'pino';
 
-// Simple log level enum with emoji mapping
 export enum LogLevel {
   INFO = 'INFO',
   DEBUG = 'DEBUG',
@@ -17,14 +15,12 @@ const LogEmoji = {
   [LogLevel.WARN]: '⚠️',
 };
 
-// Simple context interface for log data
 export interface LogContext {
   price?: number;
   error?: Error | unknown;
   [key: string]: any;
 }
 
-// Create the Pino logger instance with appropriate configuration
 const pinoLogger = pino({
   transport: config.isDevelopment
     ? {
@@ -55,7 +51,6 @@ const pinoLogger = pino({
   },
 });
 
-// The main logging function
 function log(level: LogLevel, message: string, context?: LogContext): void {
   // Development mode: pretty console logs with emojis
   if (config.isDevelopment) {
@@ -100,23 +95,16 @@ function log(level: LogLevel, message: string, context?: LogContext): void {
   }
 }
 
-// Create enhanced logger object with direct methods
 export const logger = {
-  // Keep the original Pino instance available
   pino: pinoLogger,
 
-  // Add method to directly log information
   info: (message: string, context?: LogContext): void => log(LogLevel.INFO, message, context),
 
-  // Add method to directly log debug information
   debug: (message: string, context?: LogContext): void => log(LogLevel.DEBUG, message, context),
 
-  // Add method to directly log errors
   error: (message: string, context?: LogContext): void => log(LogLevel.ERROR, message, context),
 
-  // Add method to directly log warnings
   warn: (message: string, context?: LogContext): void => log(LogLevel.WARN, message, context),
 };
 
-// Default export for convenient import
 export default logger;

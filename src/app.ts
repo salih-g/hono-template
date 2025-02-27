@@ -2,7 +2,6 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { logger as honoLogger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
-import { swaggerUI } from '@hono/swagger-ui';
 
 import { config } from './config';
 import { loggerMiddleware } from './middlewares/logger.middleware';
@@ -23,13 +22,6 @@ app.use(
     allowHeaders: ['Content-Type', 'Authorization'],
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     maxAge: 86400,
-  }),
-);
-
-app.get(
-  config.swagger.path,
-  swaggerUI({
-    url: `${config.apiPrefix}/swagger.json`,
   }),
 );
 

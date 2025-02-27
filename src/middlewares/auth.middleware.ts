@@ -1,8 +1,9 @@
 import { Context, Next } from 'hono';
 import jwt from 'jsonwebtoken';
+
 import { config } from '../config';
-import { prisma } from '../index';
 import { Role } from '@prisma/client';
+import { prisma } from '@/prisma';
 
 interface JwtPayload {
   sub: string;

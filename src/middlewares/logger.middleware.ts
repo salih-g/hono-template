@@ -1,4 +1,5 @@
 import { Context, Next } from 'hono';
+
 import { logger } from '../utils/logger';
 
 export async function loggerMiddleware(c: Context, next: Next) {

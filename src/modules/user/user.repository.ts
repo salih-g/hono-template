@@ -1,6 +1,6 @@
+import { prisma } from '@/prisma';
+import logger from '@/utils/logger';
 import { Prisma, User } from '@prisma/client';
-import { prisma } from '../index';
-import { logger } from '../utils/logger';
 
 export const userRepository = {
   async findAll(options?: {

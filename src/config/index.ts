@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import { z } from 'zod';
 
-// Eksik ortam değişkenlerini kontrol et
 const checkRequiredEnvVars = () => {
   const requiredVars = ['DATABASE_URL', 'JWT_SECRET'];
   const missingVars = requiredVars.filter(varName => !process.env[varName]);
@@ -45,10 +44,6 @@ const envSchema = z.object({
   JWT_SECRET: z.string(),
   JWT_EXPIRES_IN: z.string().default('7d'),
   LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
-  SWAGGER_DESCRIPTION: z.string().default('API Docs'),
-  SWAGGER_TITLE: z.string().default('Hono API'),
-  SWAGGER_VERSION: z.string().default('1.0.0'),
-  SWAGGER_PATH: z.string().default('/api-docs'),
   RATE_LIMIT_WINDOW_MS: z
     .string()
     .transform(val => parseInt(val, 10))
@@ -78,12 +73,6 @@ export const config = {
   },
   logger: {
     level: env.LOG_LEVEL,
-  },
-  swagger: {
-    title: env.SWAGGER_TITLE,
-    description: env.SWAGGER_DESCRIPTION,
-    version: env.SWAGGER_VERSION,
-    path: env.SWAGGER_PATH,
   },
   rateLimit: {
     windowMs: env.RATE_LIMIT_WINDOW_MS,

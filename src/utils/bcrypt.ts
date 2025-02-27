@@ -1,4 +1,4 @@
-import { createHash, randomBytes, scrypt, timingSafeEqual } from 'crypto';
+import { randomBytes, scrypt, timingSafeEqual } from 'crypto';
 
 export const hash = async (password: string): Promise<string> => {
   return new Promise((resolve, reject) => {

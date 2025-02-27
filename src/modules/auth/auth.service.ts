@@ -1,9 +1,10 @@
 import { HTTPException } from 'hono/http-exception';
-import { hash, compare } from '../utils/bcrypt';
-import { generateToken } from '../utils/jwt';
-import { LoginInput, RegisterInput } from '../validators/auth.validator';
-import { userRepository } from '../repositories/user.repository';
-import { logger } from '../utils/logger';
+
+import { hash, compare } from '../../utils/bcrypt';
+import { generateToken } from '../../utils/jwt';
+import { LoginInput, RegisterInput } from './auth.validator';
+import { logger } from '../../utils/logger';
+import userRepository from '../user/user.repository';
 
 export const authService = {
   async register(input: RegisterInput) {

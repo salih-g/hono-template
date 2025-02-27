@@ -1,15 +1,16 @@
+import { ZodError } from 'zod';
 import { Context, Next } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+
 import { logger } from '../utils/logger';
-import { ZodError } from 'zod';
 import { config } from '../config';
 
 export async function errorMiddleware(c: Context, next: Next) {
   try {
     await next();
   } catch (error) {
-    logger.error('Error:', error);
+    logger.error('Error:', { error });
 
     // HTTP errors
     if (error instanceof HTTPException) {

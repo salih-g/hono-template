@@ -1,7 +1,8 @@
 import { Context } from 'hono';
-import { authService } from '../services/auth.service';
-import { LoginInput, RegisterInput } from '../validators/auth.validator';
-import { logger } from '../utils/logger';
+
+import { authService } from './auth.service';
+import { LoginInput, RegisterInput } from './auth.validator';
+import logger from '@/utils/logger';
 
 export const authController = {
   async register(c: Context) {
