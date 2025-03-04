@@ -1,3 +1,4 @@
+// src/index.ts
 import { serve } from '@hono/node-server';
 
 import 'module-alias/register';
@@ -23,6 +24,10 @@ async function bootstrap() {
 
     logger.info(
       `Server is running in ${config.nodeEnv} mode on http://${config.host}:${config.port}`,
+    );
+
+    logger.info(
+      `📚 API Documentation (Swagger) is available at:http://${config.host}:${config.port}/api-docs`,
     );
 
     const shutdown = async () => {

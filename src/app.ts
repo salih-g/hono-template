@@ -8,6 +8,7 @@ import { loggerMiddleware } from './middlewares/logger.middleware';
 import { errorMiddleware } from './middlewares/error.middleware';
 import { notFoundMiddleware } from './middlewares/notFound.middleware';
 import { rateLimiter } from './middlewares/rateLimit.middleware';
+import { createSwaggerApp } from './middlewares/swagger.middleware';
 import { apiRoutes } from './routes';
 
 export const app = new Hono();
@@ -24,6 +25,10 @@ app.use(
     maxAge: 86400,
   }),
 );
+
+const swaggerApp = createSwaggerApp();
+app.route('/api-docs', swaggerApp);
+app.route('/', swaggerApp);
 
 const api = new Hono().basePath(config.apiPrefix);
 
