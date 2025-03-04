@@ -23,7 +23,14 @@ export const authController = {
       );
     } catch (error) {
       logger.error('User registration error:', { error });
-      throw error;
+      return c.json(
+        {
+          success: false,
+          message: error instanceof Error ? error.message : 'Registration failed',
+          status: 400,
+        },
+        400,
+      );
     }
   },
 
@@ -42,7 +49,14 @@ export const authController = {
       });
     } catch (error) {
       logger.error('User login error:', { error });
-      throw error;
+      return c.json(
+        {
+          success: false,
+          message: error instanceof Error ? error.message : 'Login failed',
+          status: 401,
+        },
+        401,
+      );
     }
   },
 };

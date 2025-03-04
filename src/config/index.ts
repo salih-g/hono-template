@@ -42,7 +42,10 @@ const envSchema = z.object({
   API_PREFIX: z.string().default('/api/v1'),
   DATABASE_URL: z.string(),
   JWT_SECRET: z.string(),
-  JWT_EXPIRES_IN: z.string().default('7d'),
+  JWT_EXPIRES_IN: z
+    .string()
+    .transform(val => parseInt(val, 10))
+    .default('604800'),
   LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
   RATE_LIMIT_WINDOW_MS: z
     .string()
