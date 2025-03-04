@@ -17,7 +17,6 @@ A modern, type-safe, and production-ready backend template built with Hono.js an
 - 📊 **[Pino](https://getpino.io/)** - Structured application logging
 - 📏 **[ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)** - Code quality and formatting
 - 🔨 **[Husky](https://typicode.github.io/husky/) & [lint-staged](https://github.com/okonet/lint-staged)** - Git hooks for code quality
-- 🔒 **[Security Headers](https://github.com/honojs/middleware/tree/main/packages/secure-headers)** - Secure HTTP headers
 - 🔐 **JWT Authentication** - Ready-to-use auth system
 - 🚦 **Rate Limiting** - API protection
 - 🗂️ **Module Aliases** - Clean import paths

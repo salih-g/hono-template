@@ -2,7 +2,7 @@ import { Context, Next } from 'hono';
 import jwt from 'jsonwebtoken';
 
 import { config } from '../config';
-import { Role } from '@prisma/client';
+import { $Enums, Role } from '@prisma/client';
 import { prisma } from '@/prisma';
 
 interface JwtPayload {
@@ -11,6 +11,12 @@ interface JwtPayload {
   role: Role;
   iat: number;
   exp: number;
+}
+
+export interface UserPayload {
+  id: string;
+  email: string;
+  role: $Enums.Role;
 }
 
 export function authMiddleware() {

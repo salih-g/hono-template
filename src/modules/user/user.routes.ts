@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
-import { authMiddleware, roleMiddleware } from '../../middlewares/auth.middleware';
+import { authMiddleware, roleMiddleware, UserPayload } from '../../middlewares/auth.middleware';
 
-export const userRoutes = new Hono();
+export const userRoutes = new Hono<{ Variables: { user: UserPayload } }>();
 
 userRoutes.use('*', authMiddleware());
 
